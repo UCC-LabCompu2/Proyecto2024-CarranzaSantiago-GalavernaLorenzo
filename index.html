@@ -4,14 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trabajo Final Lab Comp II - Avance 2</title>
+  <title>Trabajo Final Lab Comp II</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
 </head>
 
 <body>
   <div class="container">
-    <img loading="lazy" src="image.png" class="img" alt="imagen nav" />
+    <img loading="lazy" srcset="./image.png" class="img" />
     <div class="columns-container">
       <div class="column-1">
         <div class="title">
@@ -20,9 +21,13 @@
           MRU
         </div>
         <div class="subtitle">
-          El movimiento rectilíneo uniforme se designa frecuentemente con el
-          <a href="https://es.wikipedia.org/wiki/Acr%C3%B3nimo" style="text-decoration: underline" target="_blank">acrónimo</a>
-          MRU, aunque en algunos países se denomina como MRC, por movimiento rectilíneo constante 🚀
+          El movimiento rectilíneo uniforme se designa frecuentemente con
+          el
+          <a href="https://es.wikipedia.org/wiki/Acr%C3%B3nimo" style="text-decoration: underline" target="_blank">
+            acrónimo
+          </a>
+          MRU, aunque en algunos países se denomina como MRC,
+          por movimiento rectilíneo constante 🚀
         </div>
         <div id="canvasContainer">
           <canvas width="900" height="200" id="myCanvas"></canvas>
@@ -30,40 +35,41 @@
       </div>
       <div class="column-2">
         <div class="calculate">
-          <div class="calculo">
-            Cálculo
-          </div>
-          <div class="calculo-subtitle">
-            Rellenar exactamente dos de los siguientes campos.
-          </div>
-          <div class="subtitle-data">Tiempo</div>
-          <div class="inputcontainer">
-            <input type="number" class="input-field" placeholder="Tiempo (hs)" id="tiempo">
-          </div>
-          <div class="subtitle-data">Velocidad</div>
-          <div class="inputcontainer">
-            <input type="number" class="input-field" placeholder="Velocidad (Km/h)" id="velocidad">
-          </div>
-          <div class="subtitle-data">Distancia</div>
-          <div class="inputcontainer">
-            <input type="number" class="input-field" placeholder="Distancia (km)" id="distancia">
-          </div>
-          <div class="unit-switch">
-            <span class="unit-label">Km/h</span>
-            <label class="switch">
-              <input type="checkbox" id="unitSwitch">
-              <span class="slider round"></span>
-            </label>
-            <span class="unit-label">m/s</span>
-          </div>
-          <div class="button-cont">
-            <button class="result-button" id="calcular">Calcular</button>
-          </div>
+            <div class="calculo">
+                Cálculo
+                
+            </div>
+            <div class="calculo-subtitle">
+                Rellenar exactamente dos de los siguientes campos.
+                <div class="unit-switch">
+                  <span class="unit-label">Km/h</span>
+                    <label class="switch">
+                        <input type="checkbox" id="unitSwitch">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="unit-label">m/s</span>
+                </div>
+            </div>
+            <div class="subtitle-data">Tiempo</div>
+            <div class="inputcontainer">
+                <input type="number" class="input-field" placeholder="Tiempo (hs)" id="tiempo">
+            </div>
+            <div class="subtitle-data">Velocidad</div>
+            <div class="inputcontainer">
+                <input type="number" class="input-field" placeholder="Velocidad (Km/h)" id="velocidad">
+            </div>
+            <div class="subtitle-data">Distancia</div>
+            <div class="inputcontainer">
+                <input type="number" class="input-field" placeholder="Distancia (km)" id="distancia">
+            </div>
+            <div class="button-cont">
+                <button class="result-button" id="calcular">Calcular</button>
+            </div>
         </div>
         <div class="resultadodiv">
-          <span>Resultado: <span id="resultado"></span></span>
+            <span>Resultado: <span id="resultado"></span></span>
         </div>
-      </div>
+    </div>
     </div>
   </div>
 
