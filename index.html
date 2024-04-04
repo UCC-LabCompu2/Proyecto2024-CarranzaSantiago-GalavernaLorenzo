@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trabajo Final Lab Comp II</title>
+  <title>Trabajo Final Lab Comp II - Avance 2</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <div class="container">
-    <img loading="lazy" src="placeholder_image.jpg" class="img" alt="Placeholder Image" />
+    <img loading="lazy" src="image.png" class="img" alt="imagen nav" />
     <div class="columns-container">
       <div class="column-1">
         <div class="title">
@@ -48,6 +48,14 @@
           <div class="inputcontainer">
             <input type="number" class="input-field" placeholder="Distancia (km)" id="distancia">
           </div>
+          <div class="unit-switch">
+            <span class="unit-label">Km/h</span>
+            <label class="switch">
+              <input type="checkbox" id="unitSwitch">
+              <span class="slider round"></span>
+            </label>
+            <span class="unit-label">m/s</span>
+          </div>
           <div class="button-cont">
             <button class="result-button" id="calcular">Calcular</button>
           </div>
@@ -58,6 +66,9 @@
       </div>
     </div>
   </div>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 
 </html>
