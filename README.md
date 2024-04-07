@@ -1,5 +1,3 @@
-
-- [ ] Publicar la Web empleando GitHubPages
 # Título del Proyecto
 
 Este proyecto es una página web desarrollada como parte del trabajo final para la materia de Laboratorio de Computación II en la Universidad.
