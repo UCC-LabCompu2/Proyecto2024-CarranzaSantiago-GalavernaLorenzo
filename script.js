@@ -80,7 +80,7 @@ function dibujarVelocidad(velocidad, x) {
     // Dibujar el texto de velocidad con unidades dinámicas
     var unidadVelocidad = document.getElementById('unitSwitch').checked ? 'm/s' : 'Km/h';
     var velocidadConUnidad = velocidad + ' ' + unidadVelocidad;
-    
+
     ctx.fillStyle = '#000000';
     ctx.font = '12px Arial';
     ctx.fillText(velocidadConUnidad, x, canvas.height / 2 - altoAuto / 2 - 5);
@@ -154,9 +154,9 @@ function handleClickCalcular() {
         Toastify({
             text: "Complete exactamente 2 de los 3 campos.",
             duration: 3000,
-            gravity: "top", // Agregar esta línea
-            position: "left", // Agregar esta línea
-            backgroundColor: "linear-gradient(to right, #FF0000, #FF6347)" // Agregar esta línea
+            gravity: "top",
+            position: "left",
+            background: "linear-gradient(to right, #FF0000, #FF6347)"
         }).showToast();
         resultSpan.textContent = "Hubo un error";
         // Mantener el canvas visible incluso si hay un error
