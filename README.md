@@ -1,4 +1,4 @@
-# Título del Proyecto
+# Proyecto2024-CarranzaSantiago-GalavernaLorenzo
 
 Este proyecto es una página web desarrollada como parte del trabajo final para la materia de Laboratorio de Computación II en la Universidad.
 
