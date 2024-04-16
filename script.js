@@ -38,36 +38,42 @@ let distanciaInput; // Distancia ingresada
  * @method animar
  * @return {void}
  */
-const animar = () => {
-    // Actualizar posición del auto
-    posXAuto += velocidadAuto;
+let distanciaRestante; // Variable para mantener el número de vueltas completadas
 
-    // Si el auto llega al final del canvas, restablecer su posición
-    if (posXAuto > canvas.width) {
-        posXAuto = -anchoAuto;
+const animar = () => {
+        posXAuto += velocidadAuto;
+    
+        // Si el auto alcanza el borde del canvas, detén la animación
+        if (posXAuto >= canvas.width - anchoAuto) {
+            posXAuto = canvas.width - anchoAuto; // Ajusta la posición para que la trompa del auto esté en el borde
+            velocidadAuto = 0; // Detiene el auto
+            cancelAnimationFrame(animacionId); // Detiene la animación
+            return;
+        }
+
+    // Reduce la velocidad proporcionalmente a la distancia restante
+    if (distanciaRestante < 50) {
+        velocidadAuto *= distanciaRestante / 50; // Reduce la velocidad gradualmente
     }
 
-    // Limpiar el fotograma anterior
+    // Detén la animación si la velocidad es muy baja
+    if (velocidadAuto < 0.1) {
+        velocidadAuto = 0;
+        cancelAnimationFrame(animacionId);
+        return;
+    }
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Dibujar el auto en la posición actualizada
     dibujarAuto(posXAuto);
-
-    // Dibujar la flecha en el frente del auto
     dibujarFlecha(posXAuto + anchoAuto);
-
-    // Mostrar la velocidad
     dibujarVelocidad(velocidadAuto, posXAuto + anchoAuto / 2);
-
-    // Dibujar tiempo y distancia
     dibujarVelocidadTiempo();
-
-    // Dibujar la línea de la distancia en la parte inferior
     dibujarLineaDistancia();
 
-    // Solicitar la próxima animación
     animacionId = requestAnimationFrame(animar);
 };
+
+
 
 /**
  * Dibuja el cuerpo y las ruedas del auto en el canvas.
@@ -290,7 +296,51 @@ const handleClickCalcular = () => {
     animar();
 };
 
+/**
+ * Maneja el clic en el botón de animar, inicia la animación del auto si se han ingresado los tres campos: tiempo, velocidad y distancia.
+ * Si falta algún campo, muestra un mensaje de error.
+ * @method handleClickAnimar
+ * @return {void}
+ */
+const handleClickAnimar = () => {
+    // Detener la animación actual si existe
+    if (animacionId) {
+        cancelAnimationFrame(animacionId);
+    }
 
+    // Obtener los valores de los campos de entrada
+    let tiempoInput = parseFloat(document.getElementById('tiempo').value);
+    let velocidadInput = parseFloat(document.getElementById('velocidad').value);
+    let distanciaInput = parseFloat(document.getElementById('distancia').value);
+
+    // Contar el número de entradas completadas
+    let entradasCompletadas = 0;
+    if (!isNaN(tiempoInput)) entradasCompletadas++;
+    if (!isNaN(velocidadInput)) entradasCompletadas++;
+    if (!isNaN(distanciaInput)) entradasCompletadas++;
+
+    // Mostrar mensaje de error si no se han ingresado los tres datos
+    if (entradasCompletadas !== 3) {
+        // Mostrar un mensaje de error
+        Toastify({
+            text: "Complete todos los campos antes de animar.",
+            duration: 3000,
+            gravity: "top",
+            position: "left",
+            background: "linear-gradient(to right, #FF0000, #FF6347)"
+        }).showToast();
+        return; // Salir de la función si hay un error
+    }
+
+    // Asignar el valor de velocidad a velocidadAuto
+    velocidadAuto = velocidadInput;
+
+    // Resetear la posición del auto
+    posXAuto = 0;
+
+    // Iniciar la animación
+    animar();
+};
 
 
 
@@ -298,6 +348,8 @@ const handleClickCalcular = () => {
 document.getElementById('calcular').addEventListener('click', () => {
     handleClickCalcular();
 });
+// Event listener para el botón de animar
+document.getElementById('animar').addEventListener('click', handleClickAnimar);
 
 document.addEventListener("DOMContentLoaded", () => {
     /**
