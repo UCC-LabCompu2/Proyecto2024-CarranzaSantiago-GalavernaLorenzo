@@ -1,4 +1,9 @@
-// Permitir solo inputs correctos en los campos.
+/**
+ * Evita que se ingresen caracteres incorrectos en los campos.
+ * @method EvitarIncorrectos
+ * @param {Event} event - El evento de entrada que activa la función.
+ * @return {void}
+ */
 const EvitarIncorrectos = (event) => {
     const charCode = (typeof event.which === "undefined") ? event.keyCode : event.which;
     const charStr = String.fromCharCode(charCode);
@@ -28,7 +33,11 @@ let animacionId; // Variable para almacenar el ID de la animación
 let tiempoInput; // Tiempo ingresado
 let distanciaInput; // Distancia ingresada
 
-// Función para mover el auto y actualizar el canvas
+/**
+ * Función para mover el auto y actualizar el canvas.
+ * @method animar
+ * @return {void}
+ */
 const animar = () => {
     // Actualizar posición del auto
     posXAuto += velocidadAuto;
@@ -60,7 +69,12 @@ const animar = () => {
     animacionId = requestAnimationFrame(animar);
 };
 
-// Función para dibujar el auto
+/**
+ * Dibuja el cuerpo y las ruedas del auto en el canvas.
+ * @method dibujarAuto
+ * @param {number} x - La posición horizontal del auto en el canvas.
+ * @return {void}
+ */
 const dibujarAuto = (x) => {
     // Dibujar el cuerpo del auto
     ctx.fillStyle = '#0066FF';
@@ -74,7 +88,12 @@ const dibujarAuto = (x) => {
     ctx.fill();
 };
 
-// Función para dibujar la flecha que indica la dirección
+/**
+ * Dibuja una flecha que indica la dirección sobre el auto en el canvas.
+ * @method dibujarFlecha
+ * @param {number} x - La posición horizontal donde se dibujará la flecha.
+ * @return {void}
+ */
 const dibujarFlecha = (x) => {
     // Dibujar el palo de la flecha
     ctx.fillStyle = '#FF0000';
@@ -90,7 +109,13 @@ const dibujarFlecha = (x) => {
     ctx.fill();
 };
 
-// Función para dibujar la velocidad sobre el auto
+/**
+ * Dibuja la velocidad sobre el auto en el canvas.
+ * @method dibujarVelocidad
+ * @param {number} velocidad - La velocidad del auto.
+ * @param {number} x - La posición horizontal donde se dibujará la velocidad.
+ * @return {void}
+ */
 const dibujarVelocidad = (velocidad, x) => {
     // Dibujar el texto de velocidad con unidades dinámicas
     const unidadVelocidad = document.getElementById('unitSwitch').checked ? 'm/s' : 'Km/h';
@@ -101,7 +126,11 @@ const dibujarVelocidad = (velocidad, x) => {
     ctx.fillText(velocidadConUnidad, x, canvas.height / 2 - altoAuto / 2 - 5);
 };
 
-// Función para dibujar el tiempo y la velocidad en la esquina superior izquierda
+/**
+ * Dibuja el tiempo y la velocidad en la esquina superior izquierda del canvas.
+ * @method dibujarVelocidadTiempo
+ * @return {void}
+ */
 const dibujarVelocidadTiempo = () => {
     // Mostrar tiempo y velocidad en la esquina superior izquierda con unidades dinámicas
     const unidadVelocidad = document.getElementById('unitSwitch').checked ? 'm/s' : 'Km/h';
@@ -116,7 +145,11 @@ const dibujarVelocidadTiempo = () => {
     ctx.fillText("Velocidad: " + velocidadConUnidad, 10, 40);
 };
 
-// Función para dibujar la línea de la distancia en la parte inferior
+/**
+ * Dibuja una línea de distancia en la parte inferior del canvas y muestra la distancia con unidades dinámicas.
+ * @method dibujarLineaDistancia
+ * @return {void}
+ */
 const dibujarLineaDistancia = () => {
     // Mostrar distancia abajo en el medio con unidades dinámicas
     const unidadDistancia = document.getElementById('unitSwitch').checked ? 'm' : 'km';
@@ -149,7 +182,11 @@ const dibujarLineaDistancia = () => {
     ctx.fill();
 };
 
-// Función para manejar el clic del botón de cálculo
+/**
+ * Maneja el clic del botón de cálculo, realiza cálculos basados en los campos de entrada y muestra el resultado.
+ * @method handleClickCalcular
+ * @return {void}
+ */
 const handleClickCalcular = () => {
     tiempoInput = parseFloat(document.getElementById('tiempo').value);
     let velocidadInput = parseFloat(document.getElementById('velocidad').value);
@@ -263,7 +300,11 @@ document.getElementById('calcular').addEventListener('click', () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Function to toggle placeholders based on the unit switch state
+    /**
+     * Cambia los placeholders de los campos de entrada basándose en el estado del interruptor de unidades.
+     * @method togglePlaceholders
+     * @return {void}
+     */
     const togglePlaceholders = () => {
         const unitSwitch = document.getElementById("unitSwitch");
         const tiempoInput = document.getElementById("tiempo");
