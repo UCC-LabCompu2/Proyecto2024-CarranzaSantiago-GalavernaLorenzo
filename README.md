@@ -33,11 +33,14 @@ En esta sección se encuentra la calculadora MRU, donde los usuarios pueden ingr
 
 ## Tecnologías Utilizadas
 
-- HTML
-- CSS
-- JavaScript
-- Biblioteca Toastify.js para notificaciones
-- Google Fonts para tipografía personalizada
+| Tecnología / Herramienta | Descripción |
+|---------------------------|-------------|
+| HTML                      | Lenguaje de marcado utilizado para crear la estructura básica de las páginas web. |
+| CSS                       | Lenguaje de estilos utilizado para dar estilo y diseño a las páginas web, como colores, fuentes, márgenes, etc. |
+| JavaScript                | Lenguaje de programación utilizado para agregar interactividad y dinamismo a las páginas web. |
+| Toastify.js               | Biblioteca de JavaScript utilizada para mostrar notificaciones emergentes (toasts) en la página web. |
+| Google Fonts              | Plataforma que ofrece una amplia variedad de fuentes tipográficas que pueden ser integradas fácilmente en los sitios web. |
+
 
 ## Enlace de la Página
 
