@@ -16,9 +16,7 @@
 
 <body>
   <div class="container">
-    <nav>
-      <img loading="lazy" srcset="./images/image.png" class="img" alt="imagennav"/>
-    </nav>
+      <img loading="lazy" srcset="./images/autosarriba.png" class="img" alt="autosarriba"/>
     <div class="columns-container">
       <section class="column-1">
         <header>
@@ -31,7 +29,7 @@
         <div class="subtitle">
           El movimiento rectilíneo uniforme se designa frecuentemente con
           el
-          <a href="https://es.wikipedia.org/wiki/Acr%C3%B3nimo" style="text-decoration: underline" target="_blank">
+          <a href="https://es.wikipedia.org/wiki/Acr%C3%B3nimo" target="_blank">
             acrónimo
           </a>
           MRU, aunque en algunos países se denomina como MRC,
@@ -61,22 +59,22 @@
             <label for="tiempo">Tiempo</label>
           </div>
           <div class="inputcontainer">
-            <input type="number" class="input-field" placeholder="Tiempo (hs)" id="tiempo">
+            <input type="number" class="input-field" placeholder="Tiempo (hs)" id="tiempo" onkeypress="EvitarIncorrectos(event)">
           </div>
           <div class="subtitle-data">
             <label for="velocidad">Velocidad</label>
           </div>
           <div class="inputcontainer">
-            <input type="number" class="input-field" placeholder="Velocidad (Km/h)" id="velocidad">
+            <input type="number" class="input-field" placeholder="Velocidad (Km/h)" id="velocidad" onkeypress="EvitarIncorrectos(event)">
           </div>
           <div class="subtitle-data">
             <label for="distancia">Distancia</label>
           </div>
           <div class="inputcontainer">
-            <input type="number" class="input-field" placeholder="Distancia (km)" id="distancia">
+            <input type="number" class="input-field" placeholder="Distancia (km)" id="distancia" onkeypress="EvitarIncorrectos(event)">
           </div>
           <div class="button-cont">
-            <button class="result-button" id="calcular">Calcular</button>
+            <button class="result-button" id="calcular" >Calcular</button>
           </div>
         </div>
         <div class="resultadodiv">

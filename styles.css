@@ -1,22 +1,16 @@
 .container {
   justify-content: center;
-  background-color: var(--Pure-White, #fff);
   display: flex;
   width: 100%;
   flex-direction: column;
 }
 
 .img {
-  object-fit: auto;
   object-position: center;
   width: 100%;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   align-self: center;
   max-width: 1244px;
-}
-
-nav{
-  text-align: center;
 }
 
 .columns-container {
@@ -36,7 +30,6 @@ nav{
 }
 
 header .title {
-  color: var(--Humble-Black, #1d1e1c);
   font: 400 96px/96px Adamina;
   font-family: 'Poppins';
   font-weight: 500;
@@ -45,7 +38,6 @@ header .title {
 }
 
 .subtitle {
-  color: var(--Humble-Black, #1d1e1c);
   margin-top: 25px;
   font-family: Poppins;
   font-weight: 500;
@@ -215,9 +207,9 @@ input:checked+.slider:before {
     margin-left: 0px;
   }
 
-  .title {
+  header .title {
     max-width: 100%;
-    font-size: 40px;
+    font-size: 35px;
     line-height: 45px;
   }
 }
