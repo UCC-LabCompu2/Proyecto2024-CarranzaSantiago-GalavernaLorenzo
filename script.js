@@ -251,10 +251,10 @@ const handleClickCalcular = () => {
         }
     }
     if (!isNaN(tiempoInput)) {
-        // If tiempoInput is provided, set its value
+        // Si se proporciona tiempoInput, establezca su valor
         tiempo = tiempoInput;
     } else {
-        // If tiempoInput is not provided, calculate it using distanciaInput and velocidadAuto
+        // si tiempoInput no se proporciona, cálculelo usando distancia y velocidadAuto
         if (!isNaN(distanciaInput) && !isNaN(velocidadAuto)) {
             tiempo = distanciaInput / velocidadAuto;
             // Asignar el tiempo calculado al campo de entrada correspondiente
@@ -262,10 +262,10 @@ const handleClickCalcular = () => {
         }
     }
     if (!isNaN(distanciaInput)) {
-        // If distanciaInput is provided, set its value
+        // Si se proporciona distanciaInput, establezca su valor
         distancia = distanciaInput;
     } else {
-        // If distanciaInput is not provided, calculate it using tiempo and velocidadAuto
+        //  si distanciaInput no se proporciona, cálculelo usando tiempo y velocidadAuto
         if (!isNaN(tiempo) && !isNaN(velocidadAuto)) {
             distancia = tiempo * velocidadAuto;
             // Asignar la distancia calculada al campo de entrada correspondiente
@@ -374,10 +374,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // Event listener for the switch change
+    // Event Listener para el interruptor de unidades
     const unitSwitch = document.getElementById("unitSwitch");
     unitSwitch.addEventListener("change", togglePlaceholders);
 
-    // Initially call togglePlaceholders to set initial state
+    // Llamar a la función togglePlaceholders para establecer los placeholders iniciales
     togglePlaceholders();
 });
