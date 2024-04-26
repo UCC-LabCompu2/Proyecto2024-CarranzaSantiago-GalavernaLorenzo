@@ -18,6 +18,22 @@ const EvitarIncorrectos = (event) => {
     }
 };
 
+// Event listener para el botón de borrar
+document.getElementById('borrar').addEventListener('click', () => {
+    // Limpia todos los campos del formulario
+    document.getElementById('tiempo').value = '';
+    document.getElementById('velocidad').value = '';
+    document.getElementById('distancia').value = '';
+    // Oculta el resultado
+    document.getElementById('resultado').textContent = '';
+    // Detiene la animación si está en curso
+    if (animacionId) {
+        cancelAnimationFrame(animacionId);
+    }
+    // Limpia el canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
+
 // Obtener el elemento canvas y su contexto
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
