@@ -25,10 +25,10 @@ La página "Física Fácil, Cálculo MRU" es una herramienta interactiva para re
 ## Contenido de la Página
 La página incluye dos secciones principales:
 
-# Sección 1: Introducción al MRU y lienzo interactivo
+### Sección 1: Introducción al MRU y lienzo interactivo
 Esta sección proporciona una breve introducción sobre el Movimiento Rectilíneo Uniforme (MRU) y ofrece un lienzo interactivo para visualizar el movimiento.
 
-# Sección 2: Calculadora MRU
+### Sección 2: Calculadora MRU
 En esta sección se encuentra la calculadora MRU, donde los usuarios pueden ingresar datos como tiempo, velocidad y distancia para realizar cálculos automáticos.
 
 ## Tecnologías Utilizadas
