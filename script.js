@@ -57,15 +57,15 @@ let distanciaInput; // Distancia ingresada
 let distanciaRestante; // Variable para mantener el número de vueltas completadas
 
 const animar = () => {
-        posXAuto += velocidadAuto;
-    
-        // Si el auto alcanza el borde del canvas, detén la animación
-        if (posXAuto >= canvas.width - anchoAuto) {
-            posXAuto = canvas.width - anchoAuto; // Ajusta la posición para que la trompa del auto esté en el borde
-            velocidadAuto = 0; // Detiene el auto
-            cancelAnimationFrame(animacionId); // Detiene la animación
-            return;
-        }
+    posXAuto += velocidadAuto;
+
+    // Si el auto alcanza el borde del canvas, detén la animación
+    if (posXAuto >= canvas.width - anchoAuto) {
+        posXAuto = canvas.width - anchoAuto; // Ajusta la posición para que la trompa del auto esté en el borde
+        velocidadAuto = 0; // Detiene el auto
+        cancelAnimationFrame(animacionId); // Detiene la animación
+        return;
+    }
 
     // Reduce la velocidad proporcionalmente a la distancia restante
     if (distanciaRestante < 50) {
@@ -73,10 +73,8 @@ const animar = () => {
     }
 
     // Detén la animación si la velocidad es muy baja
-    if (velocidadAuto < 0.1) {
+    if (velocidadAuto < 0.01) { // Cambiado de 0.1 a 0.01 para tener un límite más bajo
         velocidadAuto = 0;
-        cancelAnimationFrame(animacionId);
-        return;
     }
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -86,7 +84,9 @@ const animar = () => {
     dibujarVelocidadTiempo();
     dibujarLineaDistancia();
 
-    animacionId = requestAnimationFrame(animar);
+    if (velocidadAuto > 0) { // Solo sigue animando si la velocidad es mayor que 0
+        animacionId = requestAnimationFrame(animar);
+    }
 };
 
 
