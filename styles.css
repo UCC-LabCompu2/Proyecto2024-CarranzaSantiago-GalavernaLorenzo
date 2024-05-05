@@ -77,7 +77,7 @@ header .title {
   font: 300 16px/137.5% Roboto, sans-serif;
 }
 
-.subtitle-data {
+#subtitle-data {
   font-family: Poppins, sans-serif;
   margin-top: 32px;
   font-weight: bold;
