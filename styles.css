@@ -77,7 +77,19 @@ header .title {
   font: 300 16px/137.5% Roboto, sans-serif;
 }
 
-#subtitle-data {
+#subtitle-data1 {
+  font-family: Poppins, sans-serif;
+  margin-top: 31px;
+  font-weight: bold;
+}
+
+#subtitle-data2 {
+  font-family: Poppins, sans-serif;
+  margin-top: 33px;
+  font-weight: bold;
+}
+
+#subtitle-data3 {
   font-family: Poppins, sans-serif;
   margin-top: 32px;
   font-weight: bold;

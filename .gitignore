@@ -128,3 +128,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+.idea/modules.xml
+.idea/Proyecto2024-CarranzaSantiago-GalavernaLorenzo.iml
+.idea/vcs.xml

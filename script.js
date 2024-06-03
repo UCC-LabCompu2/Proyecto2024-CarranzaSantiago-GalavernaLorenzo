@@ -89,8 +89,6 @@ const animar = () => {
     }
 };
 
-
-
 /**
  * Dibuja el cuerpo y las ruedas del auto en el canvas.
  * @method dibujarAuto
@@ -358,8 +356,6 @@ const handleClickAnimar = () => {
     animar();
 };
 
-
-
 // Agregar el event listener al botón de cálculo
 document.getElementById('calcular').addEventListener('click', () => {
     handleClickCalcular();
@@ -396,4 +392,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Llamar a la función togglePlaceholders para establecer los placeholders iniciales
     togglePlaceholders();
+});
+
+// Event listener para evitar pegar caracteres incorrectos
+document.getElementById('tiempo').addEventListener('paste', (event) => {
+    const pastedText = event.clipboardData.getData('text');
+    // Si el texto pegado contiene el símbolo '-', se borra
+    if (pastedText.includes('-')) {
+        event.preventDefault();
+        const newValue = pastedText.replace(/-/g, ''); // Remover todos los símbolos '-'
+        document.getElementById('tiempo').value += newValue;
+    }
+});
+
+document.getElementById('velocidad').addEventListener('paste', (event) => {
+    const pastedText = event.clipboardData.getData('text');
+    // Si el texto pegado contiene el símbolo '-', se borra
+    if (pastedText.includes('-')) {
+        event.preventDefault();
+        const newValue = pastedText.replace(/-/g, ''); // Remover todos los símbolos '-'
+        document.getElementById('velocidad').value += newValue;
+    }
+});
+
+document.getElementById('distancia').addEventListener('paste', (event) => {
+    const pastedText = event.clipboardData.getData('text');
+    // Si el texto pegado contiene el símbolo '-', se borra
+    if (pastedText.includes('-')) {
+        event.preventDefault();
+        const newValue = pastedText.replace(/-/g, ''); // Remover todos los símbolos '-'
+        document.getElementById('distancia').value += newValue;
+    }
 });

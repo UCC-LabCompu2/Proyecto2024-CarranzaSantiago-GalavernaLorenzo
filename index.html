@@ -16,9 +16,9 @@
 
 <body>
   <div class="container">
-      <img loading="lazy" srcset="./images/autosarriba.png" class="img" alt="autosarriba"/>
+    <img loading="lazy" srcset="./images/autosarriba.png" class="img" alt="autosarriba" />
     <div class="columns-container">
-      <section class="column-1">
+      <article class="column-1">
         <header>
           <h1 class="title">
             Física Fácil, Cálculo
@@ -38,8 +38,8 @@
         <div id="canvasContainer">
           <canvas width="900" height="200" id="myCanvas"></canvas>
         </div>
-      </section>
-      <section class="column-2">
+      </article>
+      <aside class="column-2">
         <div class="calculate">
           <div class="calculo">
             Cálculo
@@ -55,38 +55,38 @@
               <span class="unit-label">m/s</span>
             </div>
           </div>
-          <div id="subtitle-data">
+          <div id="subtitle-data1">
             <label for="tiempo">Tiempo</label>
           </div>
           <div class="inputcontainer">
             <input type="number" class="input-field" placeholder="Tiempo (hs)" id="tiempo" onkeypress="EvitarIncorrectos(event)">
           </div>
-          <div id="subtitle-data">
+          <div id="subtitle-data2">
             <label for="velocidad">Velocidad</label>
           </div>
           <div class="inputcontainer">
             <input type="number" class="input-field" placeholder="Velocidad (Km/h)" id="velocidad" onkeypress="EvitarIncorrectos(event)">
           </div>
-          <div id="subtitle-data">
+          <div id="subtitle-data3">
             <label for="distancia">Distancia</label>
           </div>
           <div class="inputcontainer">
             <input type="number" class="input-field" placeholder="Distancia (km)" id="distancia" onkeypress="EvitarIncorrectos(event)">
           </div>
           <div class="button-cont">
-            <button class="result-button" id="calcular" >Calcular</button>
+            <button class="result-button" id="calcular">Calcular</button>
           </div>
           <div class="button-cont">
-            <button class="result-button" id="animar" >Animar</button>
+            <button class="result-button" id="animar">Animar</button>
           </div>
           <div class="button-cont">
-          <button class="clear-button" id="borrar">Borrar</button>
-        </div>
+            <button class="clear-button" id="borrar">Borrar</button>
+          </div>
         </div>
         <div class="resultadodiv">
           <span>Resultado: <span id="resultado"></span></span>
         </div>
-      </section>
+      </aside>
     </div>
   </div>
 
