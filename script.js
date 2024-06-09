@@ -39,8 +39,8 @@ const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
 // Definir propiedades del auto
-let anchoAuto = 80;
-let altoAuto = 40;
+const anchoAuto = 80;
+const altoAuto = 40;
 const radioRueda = 10;
 let posXAuto = 0;
 let velocidadAuto = 2;
@@ -54,7 +54,7 @@ let distanciaInput;
  * @method animar
  * @return {void}
  */
-let distanciaRestante; 
+let distanciaRestante;
 
 const animar = () => {
     posXAuto += velocidadAuto;
@@ -233,7 +233,7 @@ const handleClickCalcular = () => {
         resultSpan.textContent = "Hubo un error";
         // Mantener el canvas visible incluso si hay un error
         canvasContainer.style.display = 'block';
-        return; 
+        return;
     }
 
     // Mostrar mensaje de error si tiempo o velocidad son calculadas y los otros 2 datos son 0
@@ -248,7 +248,7 @@ const handleClickCalcular = () => {
         resultSpan.textContent = "Hubo un error";
         // Mantener el canvas visible incluso si hay un error
         canvasContainer.style.display = 'block';
-        return; 
+        return;
     }
     posXAuto = 0;
 
