@@ -18,7 +18,7 @@ const EvitarIncorrectos = (event) => {
     }
 };
 
-// Event listener para el botón de borrar
+// Event listener para el botón de borrar que borra todos los campos del formulario
 document.getElementById('borrar').addEventListener('click', () => {
     // Limpia todos los campos del formulario
     document.getElementById('tiempo').value = '';
@@ -42,19 +42,19 @@ const ctx = canvas.getContext('2d');
 let anchoAuto = 80;
 let altoAuto = 40;
 const radioRueda = 10;
-let posXAuto = 0; // Posición inicial del auto
-let velocidadAuto = 2; // Velocidad del auto
-const tamañoFlecha = 15; // Tamaño de la flecha
-let animacionId; // Variable para almacenar el ID de la animación
-let tiempoInput; // Tiempo ingresado
-let distanciaInput; // Distancia ingresada
+let posXAuto = 0;
+let velocidadAuto = 2;
+const tamañoFlecha = 15;
+let animacionId;
+let tiempoInput;
+let distanciaInput;
 
 /**
- * Función para mover el auto y actualizar el canvas.
+* Anima el auto moviéndolo a través del canvas y redibuja los elementos.
  * @method animar
  * @return {void}
  */
-let distanciaRestante; // Variable para mantener el número de vueltas completadas
+let distanciaRestante; 
 
 const animar = () => {
     posXAuto += velocidadAuto;
@@ -233,7 +233,7 @@ const handleClickCalcular = () => {
         resultSpan.textContent = "Hubo un error";
         // Mantener el canvas visible incluso si hay un error
         canvasContainer.style.display = 'block';
-        return; // Salir de la función si hay un error
+        return; 
     }
 
     // Mostrar mensaje de error si tiempo o velocidad son calculadas y los otros 2 datos son 0
@@ -248,10 +248,8 @@ const handleClickCalcular = () => {
         resultSpan.textContent = "Hubo un error";
         // Mantener el canvas visible incluso si hay un error
         canvasContainer.style.display = 'block';
-        return; // Salir de la función si hay un error
+        return; 
     }
-
-    // Resetear posición del auto y velocidad
     posXAuto = 0;
 
     if (!isNaN(velocidadInput)) {
@@ -306,7 +304,6 @@ const handleClickCalcular = () => {
         cancelAnimationFrame(animacionId);
     }
 
-    // Iniciar la animación
     animar();
 };
 
@@ -335,7 +332,6 @@ const handleClickAnimar = () => {
 
     // Mostrar mensaje de error si no se han ingresado los tres datos
     if (entradasCompletadas !== 3) {
-        // Mostrar un mensaje de error
         Toastify({
             text: "Complete todos los campos antes de animar.",
             duration: 3000,
@@ -343,16 +339,13 @@ const handleClickAnimar = () => {
             position: "left",
             background: "linear-gradient(to right, #FF0000, #FF6347)"
         }).showToast();
-        return; // Salir de la función si hay un error
+        return;
     }
 
-    // Asignar el valor de velocidad a velocidadAuto
     velocidadAuto = velocidadInput;
 
-    // Resetear la posición del auto
     posXAuto = 0;
 
-    // Iniciar la animación
     animar();
 };
 
@@ -390,7 +383,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const unitSwitch = document.getElementById("unitSwitch");
     unitSwitch.addEventListener("change", togglePlaceholders);
 
-    // Llamar a la función togglePlaceholders para establecer los placeholders iniciales
     togglePlaceholders();
 });
 
