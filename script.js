@@ -39,15 +39,15 @@ const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
 // Definir propiedades del auto
-const anchoAuto = 80;
-const altoAuto = 40;
-const radioRueda = 10;
-let posXAuto = 0;
-let velocidadAuto = 2;
+const anchoAuto = 80; 
+const altoAuto = 40; 
+const radioRueda = 10; 
 const tamañoFlecha = 15;
+
+// Globales necesarias para animación
+let posXAuto = 0; 
+let velocidadAuto = 2;
 let animacionId;
-let tiempoInput;
-let distanciaInput;
 
 /**
 * Anima el auto moviéndolo a través del canvas y redibuja los elementos.
@@ -62,7 +62,7 @@ const animar = () => {
     // Si el auto alcanza el borde del canvas, detén la animación
     if (posXAuto >= canvas.width - anchoAuto) {
         posXAuto = canvas.width - anchoAuto; // Ajusta la posición para que la trompa del auto esté en el borde
-        velocidadAuto = 0; // Detiene el auto
+        velocidadAuto = 0; 
         cancelAnimationFrame(animacionId); // Detiene la animación
         return;
     }
@@ -73,7 +73,7 @@ const animar = () => {
     }
 
     // Detén la animación si la velocidad es muy baja
-    if (velocidadAuto < 0.01) { // Cambiado de 0.1 a 0.01 para tener un límite más bajo
+    if (velocidadAuto < 0.01) {
         velocidadAuto = 0;
     }
 
@@ -208,9 +208,9 @@ const dibujarLineaDistancia = () => {
  * @return {void}
  */
 const handleClickCalcular = () => {
-    tiempoInput = parseFloat(document.getElementById('tiempo').value);
-    let velocidadInput = parseFloat(document.getElementById('velocidad').value);
-    distanciaInput = parseFloat(document.getElementById('distancia').value);
+    const tiempoInput = parseFloat(document.getElementById('tiempo').value);
+    const velocidadInput = parseFloat(document.getElementById('velocidad').value);
+    const distanciaInput = parseFloat(document.getElementById('distancia').value);
 
     const resultSpan = document.getElementById('resultado');
     const canvasContainer = document.getElementById('canvasContainer');
@@ -258,13 +258,13 @@ const handleClickCalcular = () => {
         if (!isNaN(distanciaInput) && !isNaN(tiempoInput)) {
             velocidadAuto = distanciaInput / tiempoInput;
             // Asignar la velocidad calculada al campo de entrada correspondiente
-            velocidadInput = velocidadAuto;
             document.getElementById('velocidad').value = velocidadAuto;
         }
     }
     if (!isNaN(tiempoInput)) {
-        // Si se proporciona tiempoInput, establezca su valor
-        tiempo = tiempoInput;
+        // Asignación explícita de tiempo 
+        tiempo = isNaN(tiempoInput) ? tiempo : tiempoInput;
+
     } else {
         // si tiempoInput no se proporciona, cálculelo usando distancia y velocidadAuto
         if (!isNaN(distanciaInput) && !isNaN(velocidadAuto)) {
@@ -274,8 +274,9 @@ const handleClickCalcular = () => {
         }
     }
     if (!isNaN(distanciaInput)) {
-        // Si se proporciona distanciaInput, establezca su valor
-        distancia = distanciaInput;
+        // Asignación explícita de distancia
+        distancia = isNaN(distanciaInput) ? distancia : distanciaInput;
+
     } else {
         //  si distanciaInput no se proporciona, cálculelo usando tiempo y velocidadAuto
         if (!isNaN(tiempo) && !isNaN(velocidadAuto)) {
@@ -320,9 +321,9 @@ const handleClickAnimar = () => {
     }
 
     // Obtener los valores de los campos de entrada
-    let tiempoInput = parseFloat(document.getElementById('tiempo').value);
-    let velocidadInput = parseFloat(document.getElementById('velocidad').value);
-    let distanciaInput = parseFloat(document.getElementById('distancia').value);
+    const tiempoInput = parseFloat(document.getElementById('tiempo').value);
+    const velocidadInput = parseFloat(document.getElementById('velocidad').value);
+    const distanciaInput = parseFloat(document.getElementById('distancia').value);
 
     // Contar el número de entradas completadas
     let entradasCompletadas = 0;
@@ -343,7 +344,6 @@ const handleClickAnimar = () => {
     }
 
     velocidadAuto = velocidadInput;
-
     posXAuto = 0;
 
     animar();
@@ -416,3 +416,18 @@ document.getElementById('distancia').addEventListener('paste', (event) => {
         document.getElementById('distancia').value += newValue;
     }
 });
+
+// Función para evitar el uso de las flechas en inputs de tipo number
+function disableArrowKeys(event) {
+    if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+      event.preventDefault();
+    }
+  }
+  
+  // Añadir el evento a los inputs de tipo number
+  document.addEventListener('DOMContentLoaded', () => {
+    const numberInputs = document.querySelectorAll('input[type="number"]');
+    numberInputs.forEach(input => {
+      input.addEventListener('keydown', disableArrowKeys);
+    });
+  });
