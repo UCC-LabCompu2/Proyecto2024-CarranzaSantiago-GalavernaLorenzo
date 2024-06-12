@@ -19,20 +19,21 @@ const EvitarIncorrectos = (event) => {
 };
 
 // Event listener para el botón de borrar que borra todos los campos del formulario
-document.getElementById('borrar').addEventListener('click', () => {
+function clearForm() {
     // Limpia todos los campos del formulario
-    document.getElementById('tiempo').value = '';
-    document.getElementById('velocidad').value = '';
-    document.getElementById('distancia').value = '';
-    // Oculta el resultado
-    document.getElementById('resultado').textContent = '';
-    // Detiene la animación si está en curso
-    if (animacionId) {
-        cancelAnimationFrame(animacionId);
-    }
+// Limpia todos los campos del formulario
+document.getElementById('tiempo').value = '';
+document.getElementById('velocidad').value = '';
+document.getElementById('distancia').value = '';
+// Oculta el resultado
+document.getElementById('resultado').textContent = '';
+// Detiene la animación si está en curso
+if (animacionId) {
+    cancelAnimationFrame(animacionId);
+}
     // Limpia el canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-});
+}
 
 // Obtener el elemento canvas y su contexto
 const canvas = document.getElementById('myCanvas');
@@ -350,72 +351,43 @@ const handleClickAnimar = () => {
 };
 
 // Agregar el event listener al botón de cálculo
-document.getElementById('calcular').addEventListener('click', () => {
-    handleClickCalcular();
-});
+//document.getElementById('calcular').addEventListener('click', () => {
+  //  handleClickCalcular();
+//});
 // Event listener para el botón de animar
-document.getElementById('animar').addEventListener('click', handleClickAnimar);
 
-document.addEventListener("DOMContentLoaded", () => {
-    /**
-     * Cambia los placeholders de los campos de entrada basándose en el estado del interruptor de unidades.
-     * @method togglePlaceholders
-     * @return {void}
-     */
-    const togglePlaceholders = () => {
-        const unitSwitch = document.getElementById("unitSwitch");
-        const tiempoInput = document.getElementById("tiempo");
-        const velocidadInput = document.getElementById("velocidad");
-        const distanciaInput = document.getElementById("distancia");
+//document.getElementById('animar').addEventListener('click', handleClickAnimar);
 
-        if (unitSwitch.checked) { // Si el interruptor está marcado (m/s)
-            tiempoInput.placeholder = "Tiempo (s)";
-            velocidadInput.placeholder = "Velocidad (m/s)";
-            distanciaInput.placeholder = "Distancia (m)";
-        } else { // Si el interruptor no está marcado (Km/h)
-            tiempoInput.placeholder = "Tiempo (hs)";
-            velocidadInput.placeholder = "Velocidad (Km/h)";
-            distanciaInput.placeholder = "Distancia (km)";
-        }
-    };
-
-    // Event Listener para el interruptor de unidades
+function togglePlaceholders() {
     const unitSwitch = document.getElementById("unitSwitch");
-    unitSwitch.addEventListener("change", togglePlaceholders);
+    const tiempoInput = document.getElementById("tiempo");
+    const velocidadInput = document.getElementById("velocidad");
+    const distanciaInput = document.getElementById("distancia");
 
-    togglePlaceholders();
-});
+    if (unitSwitch.checked) { // Si el interruptor está marcado (m/s)
+        tiempoInput.placeholder = "Tiempo (s)";
+        velocidadInput.placeholder = "Velocidad (m/s)";
+        distanciaInput.placeholder = "Distancia (m)";
+    } else { // Si el interruptor no está marcado (Km/h)
+        tiempoInput.placeholder = "Tiempo (hs)";
+        velocidadInput.placeholder = "Velocidad (Km/h)";
+        distanciaInput.placeholder = "Distancia (km)";
+    }
+}
+
+
 
 // Event listener para evitar pegar caracteres incorrectos
-document.getElementById('tiempo').addEventListener('paste', (event) => {
+function handlePaste(event, elementId) {
     const pastedText = event.clipboardData.getData('text');
-    // Si el texto pegado contiene el símbolo '-', se borra
     if (pastedText.includes('-')) {
         event.preventDefault();
-        const newValue = pastedText.replace(/-/g, ''); // Remover todos los símbolos '-'
-        document.getElementById('tiempo').value += newValue;
+        const newValue = pastedText.replace(/-/g, '');
+        document.getElementById(elementId).value += newValue;
     }
-});
+}
 
-document.getElementById('velocidad').addEventListener('paste', (event) => {
-    const pastedText = event.clipboardData.getData('text');
-    // Si el texto pegado contiene el símbolo '-', se borra
-    if (pastedText.includes('-')) {
-        event.preventDefault();
-        const newValue = pastedText.replace(/-/g, ''); // Remover todos los símbolos '-'
-        document.getElementById('velocidad').value += newValue;
-    }
-});
 
-document.getElementById('distancia').addEventListener('paste', (event) => {
-    const pastedText = event.clipboardData.getData('text');
-    // Si el texto pegado contiene el símbolo '-', se borra
-    if (pastedText.includes('-')) {
-        event.preventDefault();
-        const newValue = pastedText.replace(/-/g, ''); // Remover todos los símbolos '-'
-        document.getElementById('distancia').value += newValue;
-    }
-});
 
 // Función para evitar el uso de las flechas en inputs de tipo number
 function disableArrowKeys(event) {
