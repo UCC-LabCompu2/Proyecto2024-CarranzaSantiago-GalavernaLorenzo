@@ -18,16 +18,13 @@ const EvitarIncorrectos = (event) => {
     }
 };
 
-// Event listener para el botón de borrar que borra todos los campos del formulario
+// Funcion que limpia todos los campos del formulario, oculta el resultado, detiene la animación y limpia el canvas.
 function clearForm() {
-    // Limpia todos los campos del formulario
-    // Limpia todos los campos del formulario
     document.getElementById('tiempo').value = '';
     document.getElementById('velocidad').value = '';
     document.getElementById('distancia').value = '';
     // Oculta el resultado
     document.getElementById('resultado').textContent = '';
-    // Detiene la animación si está en curso
     if (animacionId) {
         cancelAnimationFrame(animacionId);
     }
@@ -35,7 +32,6 @@ function clearForm() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-// Obtener el elemento canvas y su contexto
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
@@ -64,16 +60,14 @@ const animar = () => {
     if (posXAuto >= canvas.width - anchoAuto) {
         posXAuto = canvas.width - anchoAuto; // Ajusta la posición para que la trompa del auto esté en el borde
         velocidadAuto = 0;
-        cancelAnimationFrame(animacionId); // Detiene la animación
+        cancelAnimationFrame(animacionId);
         return;
     }
 
-    // Reduce la velocidad proporcionalmente a la distancia restante
     if (distanciaRestante < 50) {
         velocidadAuto *= distanciaRestante / 50; // Reduce la velocidad gradualmente
     }
 
-    // Detén la animación si la velocidad es muy baja
     if (velocidadAuto < 0.01) {
         velocidadAuto = 0;
     }
@@ -203,6 +197,12 @@ const dibujarLineaDistancia = () => {
     ctx.fill();
 };
 
+/**
+ * Realiza los cálculos basados en los campos de entrada y muestra el resultado.
+ * Además, maneja casos de errores específicos y limita la visualización y animación en caso de resultados demasiado grandes.
+ * @method handleClickCalcular
+ * @return {void}
+ */
 const handleClickCalcular = () => {
     const tiempoInput = parseFloat(document.getElementById('tiempo').value);
     const velocidadInput = parseFloat(document.getElementById('velocidad').value);
@@ -370,14 +370,7 @@ const handleClickAnimar = () => {
     animar();
 };
 
-// Agregar el event listener al botón de cálculo
-//document.getElementById('calcular').addEventListener('click', () => {
-//  handleClickCalcular();
-//});
-// Event listener para el botón de animar
-
-//document.getElementById('animar').addEventListener('click', handleClickAnimar);
-
+// Funcion que cambia los placeholders de los campos de entrada según el estado del interruptor de unidades
 function togglePlaceholders() {
     const unitSwitch = document.getElementById("unitSwitch");
     const tiempoInput = document.getElementById("tiempo");
@@ -395,9 +388,7 @@ function togglePlaceholders() {
     }
 }
 
-
-
-// Event listener para evitar pegar caracteres incorrectos
+// Funcion que evita que se incluya el carácter '-' al pegar texto en un campo de entrada específico.
 function handlePaste(event, elementId) {
     const pastedText = event.clipboardData.getData('text');
     if (pastedText.includes('-')) {
@@ -406,8 +397,6 @@ function handlePaste(event, elementId) {
         document.getElementById(elementId).value += newValue;
     }
 }
-
-
 
 // Función para evitar el uso de las flechas en inputs de tipo number
 function disableArrowKeys(event) {
