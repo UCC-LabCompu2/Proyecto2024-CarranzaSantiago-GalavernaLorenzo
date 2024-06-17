@@ -35,23 +35,20 @@ function clearForm() {
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
-// Definir propiedades del auto
-const anchoAuto = 80;
-const altoAuto = 40;
-const radioRueda = 10;
-const tamañoFlecha = 15;
-
 // Globales necesarias para animación
 let posXAuto = 0;
+const anchoAuto = 80;
 let velocidadAuto = 2;
 let animacionId;
+let tiempo;
+let distancia;
+let distanciaRestante;
 
 /**
 * Anima el auto moviéndolo a través del canvas y redibuja los elementos.
  * @method animar
  * @return {void}
  */
-let distanciaRestante;
 
 const animar = () => {
     posXAuto += velocidadAuto;
@@ -91,6 +88,8 @@ const animar = () => {
  * @return {void}
  */
 const dibujarAuto = (x) => {
+    const altoAuto = 40;
+    const radioRueda = 10;
     // Dibujar el cuerpo del auto
     ctx.fillStyle = '#0066FF';
     ctx.fillRect(x, canvas.height / 2 - altoAuto / 2, anchoAuto, altoAuto);
@@ -110,6 +109,7 @@ const dibujarAuto = (x) => {
  * @return {void}
  */
 const dibujarFlecha = (x) => {
+    const tamañoFlecha = 15;
     // Dibujar el palo de la flecha
     ctx.fillStyle = '#FF0000';
     const longitudPaloFlecha = tamañoFlecha * 1;
@@ -132,6 +132,7 @@ const dibujarFlecha = (x) => {
  * @return {void}
  */
 const dibujarVelocidad = (velocidad, x) => {
+    const altoAuto = 40;
     // Dibujar el texto de velocidad con unidades dinámicas
     const unidadVelocidad = document.getElementById('unitSwitch').checked ? 'm/s' : 'Km/h';
     const velocidadConUnidad = velocidad + ' ' + unidadVelocidad;
@@ -207,7 +208,7 @@ const handleClickCalcular = () => {
     const tiempoInput = parseFloat(document.getElementById('tiempo').value);
     const velocidadInput = parseFloat(document.getElementById('velocidad').value);
     const distanciaInput = parseFloat(document.getElementById('distancia').value);
-    const MAX_RESULTADO_PERMITIDO = 1000000;
+    const MAX_RESULTADO_PERMITIDO = 10000;
 
     const resultSpan = document.getElementById('resultado');
     const canvasContainer = document.getElementById('canvasContainer');
