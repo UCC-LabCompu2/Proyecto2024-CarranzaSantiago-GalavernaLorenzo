@@ -21,16 +21,16 @@ const EvitarIncorrectos = (event) => {
 // Event listener para el botón de borrar que borra todos los campos del formulario
 function clearForm() {
     // Limpia todos los campos del formulario
-// Limpia todos los campos del formulario
-document.getElementById('tiempo').value = '';
-document.getElementById('velocidad').value = '';
-document.getElementById('distancia').value = '';
-// Oculta el resultado
-document.getElementById('resultado').textContent = '';
-// Detiene la animación si está en curso
-if (animacionId) {
-    cancelAnimationFrame(animacionId);
-}
+    // Limpia todos los campos del formulario
+    document.getElementById('tiempo').value = '';
+    document.getElementById('velocidad').value = '';
+    document.getElementById('distancia').value = '';
+    // Oculta el resultado
+    document.getElementById('resultado').textContent = '';
+    // Detiene la animación si está en curso
+    if (animacionId) {
+        cancelAnimationFrame(animacionId);
+    }
     // Limpia el canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
@@ -40,13 +40,13 @@ const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
 // Definir propiedades del auto
-const anchoAuto = 80; 
-const altoAuto = 40; 
-const radioRueda = 10; 
+const anchoAuto = 80;
+const altoAuto = 40;
+const radioRueda = 10;
 const tamañoFlecha = 15;
 
 // Globales necesarias para animación
-let posXAuto = 0; 
+let posXAuto = 0;
 let velocidadAuto = 2;
 let animacionId;
 
@@ -63,7 +63,7 @@ const animar = () => {
     // Si el auto alcanza el borde del canvas, detén la animación
     if (posXAuto >= canvas.width - anchoAuto) {
         posXAuto = canvas.width - anchoAuto; // Ajusta la posición para que la trompa del auto esté en el borde
-        velocidadAuto = 0; 
+        velocidadAuto = 0;
         cancelAnimationFrame(animacionId); // Detiene la animación
         return;
     }
@@ -203,15 +203,11 @@ const dibujarLineaDistancia = () => {
     ctx.fill();
 };
 
-/**
- * Maneja el clic del botón de cálculo, realiza cálculos basados en los campos de entrada y muestra el resultado.
- * @method handleClickCalcular
- * @return {void}
- */
 const handleClickCalcular = () => {
     const tiempoInput = parseFloat(document.getElementById('tiempo').value);
     const velocidadInput = parseFloat(document.getElementById('velocidad').value);
     const distanciaInput = parseFloat(document.getElementById('distancia').value);
+    const MAX_RESULTADO_PERMITIDO = 1000000;
 
     const resultSpan = document.getElementById('resultado');
     const canvasContainer = document.getElementById('canvasContainer');
@@ -251,6 +247,7 @@ const handleClickCalcular = () => {
         canvasContainer.style.display = 'block';
         return;
     }
+
     posXAuto = 0;
 
     if (!isNaN(velocidadInput)) {
@@ -262,24 +259,20 @@ const handleClickCalcular = () => {
             document.getElementById('velocidad').value = velocidadAuto;
         }
     }
-    if (!isNaN(tiempoInput)) {
-        // Asignación explícita de tiempo 
-        tiempo = isNaN(tiempoInput) ? tiempo : tiempoInput;
 
+    if (!isNaN(tiempoInput)) {
+        tiempo = tiempoInput;
     } else {
-        // si tiempoInput no se proporciona, cálculelo usando distancia y velocidadAuto
         if (!isNaN(distanciaInput) && !isNaN(velocidadAuto)) {
             tiempo = distanciaInput / velocidadAuto;
             // Asignar el tiempo calculado al campo de entrada correspondiente
             document.getElementById('tiempo').value = tiempo;
         }
     }
-    if (!isNaN(distanciaInput)) {
-        // Asignación explícita de distancia
-        distancia = isNaN(distanciaInput) ? distancia : distanciaInput;
 
+    if (!isNaN(distanciaInput)) {
+        distancia = distanciaInput;
     } else {
-        //  si distanciaInput no se proporciona, cálculelo usando tiempo y velocidadAuto
         if (!isNaN(tiempo) && !isNaN(velocidadAuto)) {
             distancia = tiempo * velocidadAuto;
             // Asignar la distancia calculada al campo de entrada correspondiente
@@ -287,17 +280,44 @@ const handleClickCalcular = () => {
         }
     }
 
+    let resultado;
+
     // Calcular y mostrar el resultado
     if (!isNaN(tiempoInput) && !isNaN(velocidadInput)) {
+        resultado = velocidadInput * tiempoInput;
         const unidadDistancia = document.getElementById('unitSwitch').checked ? 'm' : 'km';
-        resultSpan.textContent = "Distancia: " + (velocidadInput * tiempoInput) + " " + unidadDistancia;
+        resultSpan.textContent = "Distancia: " + resultado.toFixed(2) + " " + unidadDistancia;
     } else if (!isNaN(distanciaInput) && !isNaN(velocidadInput)) {
+        resultado = distanciaInput / velocidadInput;
         const unidadTiempo = document.getElementById('unitSwitch').checked ? 's' : 'horas';
-        resultSpan.textContent = "Tiempo: " + (distanciaInput / velocidadInput) + " " + unidadTiempo;
+        resultSpan.textContent = "Tiempo: " + resultado.toFixed(2) + " " + unidadTiempo;
     } else if (!isNaN(distanciaInput) && !isNaN(tiempoInput)) {
+        resultado = distanciaInput / tiempoInput;
         const unidadVelocidad = document.getElementById('unitSwitch').checked ? 'm/s' : 'Km/h';
-        resultSpan.textContent = "Velocidad: " + (distanciaInput / tiempoInput) + " " + unidadVelocidad;
+        resultSpan.textContent = "Velocidad: " + resultado.toFixed(2) + " " + unidadVelocidad;
     }
+
+    if (resultado && resultado > MAX_RESULTADO_PERMITIDO) {
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (animacionId) {
+            cancelAnimationFrame(animacionId);
+        }
+
+        Toastify({
+            text: "No se puede graficar numeros tan grandes.",
+            duration: 3000,
+            gravity: "top",
+            position: "left",
+            background: "linear-gradient(to right, #FF0000, #FF6347)"
+        }).showToast();
+
+        resultSpan.textContent = '';
+
+        return;
+    }
+
     // Mostrar canvas cuando el resultado está presente
     canvasContainer.style.display = 'block';
 
@@ -352,7 +372,7 @@ const handleClickAnimar = () => {
 
 // Agregar el event listener al botón de cálculo
 //document.getElementById('calcular').addEventListener('click', () => {
-  //  handleClickCalcular();
+//  handleClickCalcular();
 //});
 // Event listener para el botón de animar
 
@@ -392,14 +412,14 @@ function handlePaste(event, elementId) {
 // Función para evitar el uso de las flechas en inputs de tipo number
 function disableArrowKeys(event) {
     if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
-      event.preventDefault();
+        event.preventDefault();
     }
-  }
-  
-  // Añadir el evento a los inputs de tipo number
-  document.addEventListener('DOMContentLoaded', () => {
+}
+
+// Añadir el evento a los inputs de tipo number
+document.addEventListener('DOMContentLoaded', () => {
     const numberInputs = document.querySelectorAll('input[type="number"]');
     numberInputs.forEach(input => {
-      input.addEventListener('keydown', disableArrowKeys);
+        input.addEventListener('keydown', disableArrowKeys);
     });
-  });
+});
