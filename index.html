@@ -2,99 +2,102 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="Galaverna Lorenzo y Carranza Santiago">
-  <meta name="description" content="Esta es una pagina creada por alumnos de la UCC como ejercicio de una materia">
-  <meta name="keywords" content="MRU, fisica, facil">
-  <title>Trabajo Final Lab Comp II</title>
-  <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Galaverna Lorenzo y Carranza Santiago">
+    <meta name="description" content="Esta es una pagina creada por alumnos de la UCC como ejercicio de una materia">
+    <meta name="keywords" content="MRU, fisica, facil">
+    <title>Trabajo Final Lab Comp II</title>
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
 </head>
 
 <body>
-  <div class="container">
-    <img loading="lazy" srcset="./images/autosarriba.png" class="img" alt="autosarriba" />
+<div class="container">
+    <img loading="lazy" srcset="./images/autosarriba.png" class="img" alt="autosarriba"/>
     <div class="columns-container">
-      <article class="column-1">
-        <header>
-          <h1 class="title">
-            Física Fácil, Cálculo
-            <br />
-            MRU
-          </h1>
-        </header>
-        <div class="subtitle">
-          El movimiento rectilíneo uniforme se designa frecuentemente con
-          el
-          <a href="https://es.wikipedia.org/wiki/Acr%C3%B3nimo" target="_blank">
-            acrónimo
-          </a>
-          MRU, aunque en algunos países se denomina como MRC,
-          por movimiento rectilíneo constante 🚀
-        </div>
-        <div id="canvasContainer">
-          <canvas width="900" height="200" id="myCanvas"></canvas>
-        </div>
-      </article>
-      <aside class="column-2">
-        <div class="calculate">
-          <div class="calculo">
-            Cálculo
-          </div>
-          <div class="calculo-subtitle">
-            Rellenar exactamente dos de los siguientes campos.
-            <div class="unit-switch">
-              <label class="unit-label" for="unitSwitch">Km/h</label>
-              <label class="switch" for="unitSwitch">
-                <input type="checkbox" id="unitSwitch" onchange="togglePlaceholders()">
-                <span class="slider round"></span>
-              </label>
-              <label class="unit-label" for="unitSwitch">m/s</label>
+        <article class="column-1">
+            <header>
+                <h1 class="title">
+                    Física Fácil, Cálculo
+                    <br/>
+                    MRU
+                </h1>
+            </header>
+            <div class="subtitle">
+                El movimiento rectilíneo uniforme se designa frecuentemente con
+                el
+                <a href="https://es.wikipedia.org/wiki/Acr%C3%B3nimo" target="_blank">
+                    acrónimo
+                </a>
+                MRU, aunque en algunos países se denomina como MRC,
+                por movimiento rectilíneo constante 🚀
             </div>
-          </div>
-          <div id="subtitle-data1">
-            <label for="tiempo">Tiempo</label>
-        </div>
-        <div class="inputcontainer">
-            <input type="number" class="input-field" placeholder="Tiempo (hs)" id="tiempo"
-                onpaste="handlePaste(event, 'tiempo')" onkeypress="EvitarIncorrectos(event)" onkeydown="disableArrowKeys(event)">
-        </div>
-        <div id="subtitle-data2">
-            <label for="velocidad">Velocidad</label>
-        </div>
-        <div class="inputcontainer">
-            <input type="number" class="input-field" placeholder="Velocidad (Km/h)" id="velocidad"
-                onpaste="handlePaste(event, 'velocidad')" onkeypress="EvitarIncorrectos(event)" onkeydown="disableArrowKeys(event)">
-        </div>
-        <div id="subtitle-data3">
-            <label for="distancia">Distancia</label>
-        </div>
-        <div class="inputcontainer">
-            <input type="number" class="input-field" placeholder="Distancia (km)" id="distancia"
-                onpaste="handlePaste(event, 'distancia')" onkeypress="EvitarIncorrectos(event)" onkeydown="disableArrowKeys(event)">
-        </div>
-          <div class="button-cont">
-            <button class="result-button" id="calcular" onclick="handleClickCalcular()">Calcular</button>
-          </div>
-          <div class="button-cont">
-            <button class="result-button" id="animar" onclick="handleClickAnimar()">Animar</button>
-          </div>
-          <div class="button-cont">
-            <button class="clear-button" id="borrar" onclick="clearForm()">Borrar</button>
-          </div>
-        </div>
-        <div class="resultadodiv">
-          <span>Resultado: <span id="resultado"></span></span>
-        </div>
-      </aside>
+            <div id="canvasContainer">
+                <canvas width="900" height="200" id="myCanvas"></canvas>
+            </div>
+        </article>
+        <aside class="column-2">
+            <div class="calculate">
+                <div class="calculo">
+                    Cálculo
+                </div>
+                <div class="calculo-subtitle">
+                    Rellenar exactamente dos de los siguientes campos.
+                    <div class="unit-switch">
+                        <label class="unit-label" for="unitSwitch">Km/h</label>
+                        <label class="switch" for="unitSwitch">
+                            <input type="checkbox" id="unitSwitch" onchange="togglePlaceholders()">
+                            <span class="slider round"></span>
+                        </label>
+                        <label class="unit-label" for="unitSwitch">m/s</label>
+                    </div>
+                </div>
+                <div id="subtitle-data1">
+                    <label for="tiempo">Tiempo</label>
+                </div>
+                <div class="inputcontainer">
+                    <input type="number" class="input-field" placeholder="Tiempo (hs)" id="tiempo"
+                           onpaste="handlePaste(event, 'tiempo')" onkeypress="EvitarIncorrectos(event)"
+                           onkeydown="disableArrowKeys(event)">
+                </div>
+                <div id="subtitle-data2">
+                    <label for="velocidad">Velocidad</label>
+                </div>
+                <div class="inputcontainer">
+                    <input type="number" class="input-field" placeholder="Velocidad (Km/h)" id="velocidad"
+                           onpaste="handlePaste(event, 'velocidad')" onkeypress="EvitarIncorrectos(event)"
+                           onkeydown="disableArrowKeys(event)">
+                </div>
+                <div id="subtitle-data3">
+                    <label for="distancia">Distancia</label>
+                </div>
+                <div class="inputcontainer">
+                    <input type="number" class="input-field" placeholder="Distancia (km)" id="distancia"
+                           onpaste="handlePaste(event, 'distancia')" onkeypress="EvitarIncorrectos(event)"
+                           onkeydown="disableArrowKeys(event)">
+                </div>
+                <div class="button-cont">
+                    <button class="result-button" id="calcular" onclick="handleClickCalcular()">Calcular</button>
+                </div>
+                <div class="button-cont">
+                    <button class="result-button" id="animar" onclick="handleClickAnimar()">Animar</button>
+                </div>
+                <div class="button-cont">
+                    <button class="clear-button" id="borrar" onclick="clearForm()">Borrar</button>
+                </div>
+            </div>
+            <div class="resultadodiv">
+                <span>Resultado: <span id="resultado"></span></span>
+            </div>
+        </aside>
     </div>
-  </div>
+</div>
 
-  <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 
 </html>

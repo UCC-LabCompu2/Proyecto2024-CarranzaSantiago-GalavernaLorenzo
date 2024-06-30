@@ -49,7 +49,7 @@ const clearForm = () => {
 };
 
 /**
-* Anima el auto moviéndolo a través del canvas y redibuja los elementos.
+ * Anima el auto moviéndolo a través del canvas y redibuja los elementos.
  * @method animar
  * @return {void}
  */
