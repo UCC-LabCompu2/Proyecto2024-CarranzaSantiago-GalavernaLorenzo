@@ -18,8 +18,12 @@ const EvitarIncorrectos = (event) => {
     }
 };
 
-// Funcion que limpia todos los campos del formulario, oculta el resultado, detiene la animación y limpia el canvas.
-function clearForm() {
+/**
+ * Limpia todos los campos del formulario, oculta el resultado, detiene la animación y limpia el canvas.
+ * @method clearForm
+ * @return {void}
+ */
+const clearForm = () => {
     document.getElementById('tiempo').value = '';
     document.getElementById('velocidad').value = '';
     document.getElementById('distancia').value = '';
@@ -30,7 +34,7 @@ function clearForm() {
     }
     // Limpia el canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
+};
 
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
@@ -371,8 +375,12 @@ const handleClickAnimar = () => {
     animar();
 };
 
-// Funcion que cambia los placeholders de los campos de entrada según el estado del interruptor de unidades
-function togglePlaceholders() {
+/**
+ * Cambia los placeholders de los campos de entrada según el estado del interruptor de unidades.
+ * @method togglePlaceholders
+ * @return {void}
+ */
+const togglePlaceholders = () => {
     const unitSwitch = document.getElementById("unitSwitch");
     const tiempoInput = document.getElementById("tiempo");
     const velocidadInput = document.getElementById("velocidad");
@@ -387,24 +395,35 @@ function togglePlaceholders() {
         velocidadInput.placeholder = "Velocidad (Km/h)";
         distanciaInput.placeholder = "Distancia (km)";
     }
-}
+};
 
-// Funcion que evita que se incluya el carácter '-' al pegar texto en un campo de entrada específico.
-function handlePaste(event, elementId) {
+/**
+ * Evita que se incluya el carácter '-' al pegar texto en un campo de entrada específico.
+ * @method handlePaste
+ * @param {Event} event - El evento de pegado que activa la función.
+ * @param {string} elementId - El ID del elemento de entrada.
+ * @return {void}
+ */
+const handlePaste = (event, elementId) => {
     const pastedText = event.clipboardData.getData('text');
     if (pastedText.includes('-')) {
         event.preventDefault();
         const newValue = pastedText.replace(/-/g, '');
         document.getElementById(elementId).value += newValue;
     }
-}
+};
 
-// Función para evitar el uso de las flechas en inputs de tipo number
-function disableArrowKeys(event) {
+/**
+ * Evita el uso de las flechas en inputs de tipo number.
+ * @method disableArrowKeys
+ * @param {Event} event - El evento de teclado que activa la función.
+ * @return {void}
+ */
+const disableArrowKeys = (event) => {
     if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
         event.preventDefault();
     }
-}
+};
 
 // Añadir el evento a los inputs de tipo number
 document.addEventListener('DOMContentLoaded', () => {
