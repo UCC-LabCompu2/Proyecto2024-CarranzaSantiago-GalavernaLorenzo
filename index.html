@@ -57,25 +57,25 @@
           </div>
           <div id="subtitle-data1">
             <label for="tiempo">Tiempo</label>
-          </div>
-          <div class="inputcontainer">
+        </div>
+        <div class="inputcontainer">
             <input type="number" class="input-field" placeholder="Tiempo (hs)" id="tiempo"
-              onpaste="handlePaste(event, 'tiempo')" onkeypress="EvitarIncorrectos(event)">
-          </div>
-          <div id="subtitle-data2">
+                onpaste="handlePaste(event, 'tiempo')" onkeypress="EvitarIncorrectos(event)" onkeydown="disableArrowKeys(event)">
+        </div>
+        <div id="subtitle-data2">
             <label for="velocidad">Velocidad</label>
-          </div>
-          <div class="inputcontainer">
+        </div>
+        <div class="inputcontainer">
             <input type="number" class="input-field" placeholder="Velocidad (Km/h)" id="velocidad"
-              onpaste="handlePaste(event, 'velocidad')" onkeypress="EvitarIncorrectos(event)">
-          </div>
-          <div id="subtitle-data3">
+                onpaste="handlePaste(event, 'velocidad')" onkeypress="EvitarIncorrectos(event)" onkeydown="disableArrowKeys(event)">
+        </div>
+        <div id="subtitle-data3">
             <label for="distancia">Distancia</label>
-          </div>
-          <div class="inputcontainer">
+        </div>
+        <div class="inputcontainer">
             <input type="number" class="input-field" placeholder="Distancia (km)" id="distancia"
-              onpaste="handlePaste(event, 'distancia')" onkeypress="EvitarIncorrectos(event)">
-          </div>
+                onpaste="handlePaste(event, 'distancia')" onkeypress="EvitarIncorrectos(event)" onkeydown="disableArrowKeys(event)">
+        </div>
           <div class="button-cont">
             <button class="result-button" id="calcular" onclick="handleClickCalcular()">Calcular</button>
           </div>

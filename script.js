@@ -424,11 +424,3 @@ const disableArrowKeys = (event) => {
         event.preventDefault();
     }
 };
-
-// Añadir el evento a los inputs de tipo number
-document.addEventListener('DOMContentLoaded', () => {
-    const numberInputs = document.querySelectorAll('input[type="number"]');
-    numberInputs.forEach(input => {
-        input.addEventListener('keydown', disableArrowKeys);
-    });
-});
