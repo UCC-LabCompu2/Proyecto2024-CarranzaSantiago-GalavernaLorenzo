@@ -1,3 +1,15 @@
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+
+// Globales necesarias para animación
+let posXAuto = 0;
+const anchoAuto = 80;
+let velocidadAuto = 2;
+let animacionId;
+let tiempo;
+let distancia;
+let distanciaRestante;
+
 /**
  * Evita que se ingresen caracteres incorrectos en los campos.
  * @method EvitarIncorrectos
@@ -35,18 +47,6 @@ const clearForm = () => {
     // Limpia el canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 };
-
-const canvas = document.getElementById('myCanvas');
-const ctx = canvas.getContext('2d');
-
-// Globales necesarias para animación
-let posXAuto = 0;
-const anchoAuto = 80;
-let velocidadAuto = 2;
-let animacionId;
-let tiempo;
-let distancia;
-let distanciaRestante;
 
 /**
 * Anima el auto moviéndolo a través del canvas y redibuja los elementos.
@@ -311,7 +311,7 @@ const handleClickCalcular = () => {
         }
 
         Toastify({
-            text: "No se puede graficar numeros tan grandes.",
+            text: "No se puede graficar números tan grandes.",
             duration: 3000,
             gravity: "top",
             position: "left",
