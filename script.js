@@ -346,30 +346,6 @@ const handleClickAnimar = () => {
         cancelAnimationFrame(animacionId);
     }
 
-    // Obtener los valores de los campos de entrada
-    const tiempoInput = parseFloat(document.getElementById('tiempo').value);
-    const velocidadInput = parseFloat(document.getElementById('velocidad').value);
-    const distanciaInput = parseFloat(document.getElementById('distancia').value);
-
-    // Contar el número de entradas completadas
-    let entradasCompletadas = 0;
-    if (!isNaN(tiempoInput)) entradasCompletadas++;
-    if (!isNaN(velocidadInput)) entradasCompletadas++;
-    if (!isNaN(distanciaInput)) entradasCompletadas++;
-
-    // Mostrar mensaje de error si no se han ingresado los tres datos
-    if (entradasCompletadas !== 3) {
-        Toastify({
-            text: "Complete todos los campos antes de animar.",
-            duration: 3000,
-            gravity: "top",
-            position: "left",
-            background: "linear-gradient(to right, #FF0000, #FF6347)"
-        }).showToast();
-        return;
-    }
-
-    velocidadAuto = velocidadInput;
     posXAuto = 0;
 
     animar();
