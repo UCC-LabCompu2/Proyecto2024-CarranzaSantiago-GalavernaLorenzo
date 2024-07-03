@@ -8,7 +8,6 @@ let velocidadAuto = 2;
 let animacionId;
 let tiempo;
 let distancia;
-let distanciaRestante;
 
 /**
  * Evita que se ingresen caracteres incorrectos en los campos.
@@ -63,10 +62,6 @@ const animar = () => {
         velocidadAuto = 0;
         cancelAnimationFrame(animacionId);
         return;
-    }
-
-    if (distanciaRestante < 50) {
-        velocidadAuto *= distanciaRestante / 50; // Reduce la velocidad gradualmente
     }
 
     if (velocidadAuto < 0.01) {
